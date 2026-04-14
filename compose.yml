@@ -1,0 +1,44 @@
+---
+services:
+  db:
+    image: harishdoc098/flm2026:dbimage
+    ports:
+      - "3306:3306"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  auth_service:
+    image: harishdoc098/flm2026:authimage
+    ports:
+      - "5001:5001"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  book_service:
+    image: harishdoc098/flm2026:bookimage
+    ports:
+      - "5002:5002"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  borrow_service:
+    image: harishdoc098/flm2026:borrowimage
+    ports:
+      - "5003:5003"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  forntend_service:
+    image: harishdoc098/flm2026:appimage
+    ports:
+      - "5000:5000"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  
+  
