@@ -1,7 +1,7 @@
 ---
 services:
   db:
-    image: harishdoc098/flm2026:dbimage
+    image: harishdoc098/python:db
     ports:
       - "3306:3306"
     deploy:
@@ -9,7 +9,7 @@ services:
       restart_policy:
         condition: on-failure
   auth_service:
-    image: harishdoc098/flm2026:authimage
+    image: harishdoc098/python:authimage
     ports:
       - "5001:5001"
     deploy:
@@ -17,7 +17,7 @@ services:
       restart_policy:
         condition: on-failure
   book_service:
-    image: harishdoc098/flm2026:bookimage
+    image: harishdoc098/python:bookimage
     ports:
       - "5002:5002"
     deploy:
@@ -25,7 +25,7 @@ services:
       restart_policy:
         condition: on-failure
   borrow_service:
-    image: harishdoc098/flm2026:borrowimage
+    image: harishdoc098/python:borrowimage
     ports:
       - "5003:5003"
     deploy:
@@ -33,7 +33,7 @@ services:
       restart_policy:
         condition: on-failure
   forntend_service:
-    image: harishdoc098/flm2026:appimage
+    image: harishdoc098/python:appimage
     ports:
       - "5000:5000"
     deploy:
