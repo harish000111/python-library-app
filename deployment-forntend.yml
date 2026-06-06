@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: pyhton-appservice
+  namespace: python
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      name: app
+      expose: LB
+
+  template:
+    metadata:
+      labels:
+        name: app
+        expose: LB
+
+    spec:
+      containers:
+        - name: app
+          image: harishdoc098/proj:frontend
+          ports:
+            - containerPort: 5000
+
+          resources:
+            requests:
+              cpu: "40m"
+              memory: "25Mi"
+            limits:
+              cpu: "100m"
+              memory: "50Mi"

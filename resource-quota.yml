@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: python-quota
+  namespace: python
+spec:
+  hard:
+    requests.cpu: "1000m"
+    requests.memory: "800Mi"
+    limits.cpu: "2000m"
+    limits.memory: "1000Mi"

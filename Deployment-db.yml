@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: python-db
+  namespace: python
+
+spec:
+  serviceName: db-service
+  replicas: 1 
+  selector:
+    matchLabels:
+      name: db
+      expose: clusterip
+  template:
+    metadata:
+      labels:
+        name: db
+        expose: clusterip
+    spec:
+      containers:
+        - name: db
+          image: harishdoc098/proj:db
+
+          ports:
+            - containerPort: 3306
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+          volumeMounts:
+            - name: myvol
+              mountPath: /data-db
+
+      volumes:
+        - name: myvol
+          persistentVolumeClaim:
+            claimName: ebs-volumeclaim
