@@ -34,7 +34,7 @@ spec:
 
           volumeMounts:
             - name: myvol
-              mountPath: /data-db
+              mountPath: /var/lib/mysql
 
       volumes:
         - name: myvol
